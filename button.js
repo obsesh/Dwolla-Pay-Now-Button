@@ -7,9 +7,48 @@ var DwollaBtn = DwollaBtn || (function(){
         	this.cryptoFn();
         	this.HMACFn();
         	this.SHA1Fn();
-        },
-        createButton : function() {
 
+        	this.registerButtons();
+        },
+        registerButtons: function() {
+        	$('.dwolla_button')
+        	.unbind('click.DwollaBtn')
+        	.live('click.DwollaBtn', function(e) {
+        		e.preventDefault();
+
+        		var el = $(this),
+        			form = $('<form/>', {
+        				'method': 'POST',
+        				'action': 'https://www.dwolla.com/payment/pay'
+	        		});
+
+	        	// Create and append inputs
+	        	var time = (new Date).getTime(),
+	        		inputs = {
+		        		destinationId: el.attr('data-dest'),
+		        		amount: el.attr('data-amount'),
+		        		shipping: el.attr('data-shipping'),
+		        		tax: el.attr('data-tax'),
+		        		name: el.attr('data-name'),
+		        		desc: el.attr('data-desc'),
+		        		redirect: el.attr('href'),
+
+		        		key: 'NrGOvb6djfAR9Pb2U1Jho+f+fuPRSuEUTfCiiJevNH2K/u4NQg',
+		        		timestamp: time,
+		        		signature: DwollaBtn.Crypto.HMAC(DwollaBtn.Crypto.SHA1, time, 'PIJI6kXaRmbBVi2sgfRSdgqEjioIIbwOiMC+UvTQd/Oy5cWbU7'),
+		        	};
+	        	for(key in inputs) {
+	        		var input = $('<input/>', {
+	        			'type'	: 'hidden',
+	        			'name'	: key,
+	        			'value'	: inputs[key]
+	        		});
+	        		form.append(input);
+	        	}
+
+	        	console.log(form);
+	        	return false;
+        	});
         },
         cryptoFn: function() {
 			var base64map = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -279,3 +318,5 @@ var DwollaBtn = DwollaBtn || (function(){
         }
     };
 }());
+
+DwollaBtn.init();
