@@ -31,7 +31,7 @@ $(function() {
 				'data-desc'		: values.desc,
 				'data-amount'	: values.amount || 0,
 				'data-shipping'	: values.shipping || 0,
-				'data-tax'		: values.tax || 0
+				'data-tax'		: values.tax || 0,
 			});
 
 		btn_el.html(btn);
