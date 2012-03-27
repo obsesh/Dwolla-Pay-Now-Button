@@ -37,7 +37,7 @@ $(function() {
 		btn_el.html(btn);
 		code_el.text(btn.outerHTML());
 
-		if(DwollaBtn) {
+		if(typeof DwollaBtn !== 'undefined') {
 			DwollaBtn.styleButtons();
 		}
 	}

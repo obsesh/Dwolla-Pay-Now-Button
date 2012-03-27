@@ -13,12 +13,12 @@ var DwollaBtn = DwollaBtn || (function(){
         },
         styleButtons: function() {
         	$('.dwolla_button').each(function() {
-        		var el = $(this);
-
-        		var styledBtn = el.clone();
+        		var el = $(this),
+	        		styledBtn = el.clone(),
+        			amount = el.attr('data-amount');
 
         		var btnText = $('<span/>', { 'class': 'a-btn-text', 'html': el.html()}),
-        			btnSlideText = $('<span/>', { 'class': 'a-btn-slide-text', 'html': '$' + el.attr('data-amount')}),
+        			btnSlideText = $('<span/>', { 'class': 'a-btn-slide-text', 'html': '$' + amount}),
         			btnIcon = $('<span/>', { 'class': 'a-btn-icon-right', 'html': '<span></span>'});
 
         		styledBtn
@@ -26,7 +26,20 @@ var DwollaBtn = DwollaBtn || (function(){
         			.append(btnText)
         			.append(btnSlideText)
         			.append(btnIcon)
-        			.addClass('a-btn');
+        			.addClass('a-btn')
+        			.unbind('mouseover mouseout')
+        			.bind({
+        				mouseover: function() {
+        					styledBtn
+        						.css({'padding-right': 80 + (amount.length * 15)})
+        						.find('.a-btn-slide-text').width(amount.length * 15);
+        				},
+        				mouseout: function() {
+        					styledBtn
+        						.css({'padding-right': 80})
+        						.find('.a-btn-slide-text').width(0);
+        				}
+        			})
 
         		el.replaceWith(styledBtn);
         	})
