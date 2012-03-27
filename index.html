@@ -161,7 +161,9 @@
         
         <h2>Payment Button Generator</h2>
 
-        <p>Use this generator to generate an easy to use payment button.</p>
+        <p>The payment button generator is an easy way to create payment (and donations) buttons that link to your Dwolla account. You can create these with virtually no prior programming exprience. Simply fill out the parameter fields below, then follow the "installation" instructions.</p>
+
+        <p>Note: You can use multiple payment buttons on a single page.</p>
 
         <div class="section">
             <h3>Button Parameters</h3>
@@ -169,27 +171,27 @@
             <form class="params">
                 <div class="param clearfix">
                     <label for="param-dest">Destination Account ID:</label>
-                    <input type="text" placeholder="812-111-1111" id="param-dest" />    
+                    <input type="text" placeholder="812-111-1111" id="param-dest" />
                 </div>
                 <div class="param clearfix">
                     <label for="param-text">Button Text:</label>
-                    <input type="text" placeholder="Pay Now" id="param-text" />    
+                    <input type="text" placeholder="Pay Now" id="param-text" />
                 </div>
                 <div class="param clearfix">
                     <label for="param-name">Product Name</label>
-                    <input type="text" placeholder="" id="param-name" />    
+                    <input type="text" placeholder="Lollipop" id="param-name" />    
                 </div>
                 <div class="param clearfix">
                     <label for="param-desc">Product Description</label>
-                    <input type="text" placeholder="" id="param-desc" />    
+                    <input type="text" placeholder="Strawberry infused lollipop" id="param-desc" />    
                 </div>
                 <div class="param clearfix">
                     <label for="param-amount">Amount in $:</label>
-                    <input type="text" placeholder="9.95" id="param-amount" />    
+                    <input type="text" placeholder="1.95" id="param-amount" />    
                 </div>
                 <div class="param clearfix">
                     <label for="param-shipping">Shipping Cost:</label>
-                    <input type="text" placeholder="1.50" id="param-shipping" />    
+                    <input type="text" placeholder="0.99" id="param-shipping" />    
                 </div>
                 <div class="param clearfix">
                     <label for="param-tax">Tax:</label>
@@ -197,21 +199,27 @@
                 </div>
                 <div class="param clearfix">
                     <label for="param-redirect">Redirect URL:</label>
-                    <input type="text" placeholder="" id="param-redirect" />    
+                    <input type="text" placeholder="http://example.com/thanks" id="param-redirect" />    
                 </div>
             </form>
 
-            <h4>Your Button</h4>
+            <h4>Button Preview</h4>
             <div id="btn">
 
             </div>
+        </div>
 
-            <h4>Your Button Code</h4>
+        <div class="section">
+            <h3>Installation Instructions</h3>
+
+            <p>In order to use the button, you will need to do 2 things. First, copy the button code from the box below (box no. 1) to whereever you would like to place the button on your page. Second, copy the code from the second box below (box no. 2) and paste it right before the end of your body tag ("&lt;/body&gt;").</p>
+
+            <h4>1. Insert Button Code</h4>
             <div class="code">
                 <pre><code id="btn-code"></code></pre>
             </div>
         
-            <h4>Add this before the closing body tag</h4>
+            <h4>2. Include the Dwolla Helper Code</h4>
             <div class="code">
                 <pre><code>&lt;script type="text/javascript" src="http://obsesh.github.com/Dwolla-Pay-Now-Button/button.js"&gt; &lt;/script&gt;</code></pre>
             </div>

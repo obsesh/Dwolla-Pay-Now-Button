@@ -14,7 +14,7 @@ $(function() {
 		$('.params input').each(function() {
 			var el = $(this);
 
-			values[el.attr('id').replace('param-', '')] = el.val();
+			values[el.attr('id').replace('param-', '')] = el.val() || el.attr('placeholder');
 		});
 
 		return values;
@@ -25,11 +25,11 @@ $(function() {
 			btn = $('<a/>', {
 				'href'			: values.redirect || 'javascript:void(0);',
 				'class'			: 'dwolla_button',
-				'html'			: values.text || 'Pay Now',
+				'html'			: values.text,
 				'data-dest'		: values.dest,
 				'data-name'		: values.name,
 				'data-desc'		: values.desc,
-				'data-amount'	: values.amount || 0,
+				'data-amount'	: values.amount,
 				'data-shipping'	: values.shipping || 0,
 				'data-tax'		: values.tax || 0,
 			});
