@@ -36,6 +36,10 @@ $(function() {
 
 		btn_el.html(btn);
 		code_el.text(btn.outerHTML());
+
+		if(DwollaBtn) {
+			DwollaBtn.styleButtons();
+		}
 	}
 
 	$('.params input').keyup(function() {

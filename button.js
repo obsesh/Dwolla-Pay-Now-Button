@@ -9,6 +9,27 @@ var DwollaBtn = DwollaBtn || (function(){
         	this.SHA1Fn();
 
         	this.registerButtons();
+        	this.styleButtons();
+        },
+        styleButtons: function() {
+        	$('.dwolla_button').each(function() {
+        		var el = $(this);
+
+        		var styledBtn = el.clone();
+
+        		var btnText = $('<span/>', { 'class': 'a-btn-text', 'html': el.html()}),
+        			btnSlideText = $('<span/>', { 'class': 'a-btn-slide-text', 'html': '$' + el.attr('data-amount')}),
+        			btnIcon = $('<span/>', { 'class': 'a-btn-icon-right', 'html': '<span></span>'});
+
+        		styledBtn
+        			.empty()
+        			.append(btnText)
+        			.append(btnSlideText)
+        			.append(btnIcon)
+        			.addClass('a-btn');
+
+        		el.replaceWith(styledBtn);
+        	})
         },
         registerButtons: function() {
         	$('.dwolla_button')
